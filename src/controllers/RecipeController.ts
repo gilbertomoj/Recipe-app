@@ -1,0 +1,5 @@
+class RecipeController{
+
+}
+
+export {RecipeController};
