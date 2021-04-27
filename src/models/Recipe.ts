@@ -1,7 +1,7 @@
 import { knex } from "../database/connection";
 
 class Recipe{
-    async new(title: String, time: Number, description : Text, sbs: Text, items : Object, level : Number, img_url: String){
+    async new(title: String, time: Number, description : Text, sbs: Text, items : Object, level : String, img_url: String){
         try {
             const result = await knex.insert({ title, time, description, sbs, items, level, img_url }).table("recipes");
             return {status: true,result}
