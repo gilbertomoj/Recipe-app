@@ -24,10 +24,16 @@ class Recipe{
 
     async findByTitle(title: String){
         try {
-            const result = await knex.select("*").table("recipes").where({title})
-            return result;
+            var result = [];
+            result = await knex.select("*").table("recipes").where({title})
+            console.log(result.length)
+            if (result.length > 0) {
+                return {status: true ,result};
+            }else{
+                return {status: false ,erro: "O titulo inserido não existe ou está escrito incorretamente"};
+            }
         } catch (error) {
-            console.log(error)
+            return {status: false ,error};
         }
     }
 

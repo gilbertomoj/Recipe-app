@@ -36,6 +36,12 @@ class RecipeController{
     
     async findByTitle(req : Request , res : Response){
         const recipe = await Recipe.findByTitle(req.params.title);
+        if (recipe.result == []) {
+            res.status(400).send("O titulo selecionado não existe")
+        }else{
+            res.status(200).send({recipe});
+            return recipe;
+        }
         res.send(recipe);
     }
 
